@@ -27,6 +27,9 @@ def mergeDbfFiles(files):
 		
 		table = dbf.Table(aDbf)
 		table.open()
-		dbf.export(table, header= True)
+		for record in table:
+			print record
+
+		# dbf.export(table, header= True)
 		table.close()
 
