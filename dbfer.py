@@ -24,9 +24,22 @@ def mergeDbfFiles(files):
 	
 	i=0 #Counter for header
 	for aDbf in files:
-		
+		print("currently on table = {0}".format(aDbf))
+		catTable = []
 		table = dbf.Table(aDbf)
 		table.open()
-		dbf.export(table, header= True)
+		fields = dbf.get_fields(aDbf)
+		print("fields = {0}".format(fields))
+
+		for rec in table[:10]:
+			tmp = []
+			if i == 0:
+				catTable.append(fields)
+				i+=1
+			for item in rec:
+				tmp.append(item)
+			# print ("row added = {0}".format(tmp))
+			catTable.append(tmp)
 		table.close()
+	print catTable
 
