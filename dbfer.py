@@ -28,6 +28,7 @@ def mergeDbfFiles(files):
 		catTable = []
 		table = dbf.Table(aDbf)
 		table.open()
+
 		fields = dbf.get_fields(aDbf)
 		print("fields = {0}".format(fields))
 
@@ -39,7 +40,8 @@ def mergeDbfFiles(files):
 			for item in rec:
 				tmp.append(item)
 			# print ("row added = {0}".format(tmp))
-			catTable.append(tmp)
+		catTable.append(tmp)
+
 		table.close()
 	print catTable
 

@@ -1,4 +1,6 @@
-.dbf
+rigdata
+*.dbf
+*.csv
 
 *.py[cod]
 
