@@ -1,15 +1,17 @@
 import dbf
 import os
 
-def getAndFilterFiles(path, filt):
+def getAndFilterFiles(path, filt, fileFormat):
 	'''Get and Filter a list of files type = filt Files'''
 	for root, dirs, files in os.walk(path):
 		print("Collecting File List")
 
 	filteredFiles = []
 	for aFile in files:
-		if aFile.endswith((filt)):
-			filteredFiles.append(os.path.join(path,aFile))
+		if aFile.endswith(fileFormat):
+			if filt in os.path.basename(aFile):
+				print aFile	
+				filteredFiles.append(os.path.join(path, aFile))
 
 	print("File List = {0}".format(files))
 	print("filteredFile List = {0}".format(filteredFiles))
@@ -43,5 +45,16 @@ def mergeDbfFiles(files):
 		catTable.append(tmp)
 
 		table.close()
-	print catTable
+	print catTable, fields
+
+def removeDups(inputList, fields):
+
+	clean = []
+	print fields
+	wellIdInx = fields.index('well_id')
+	
+
+
+	for row in inputList:
+		temp = []
 
