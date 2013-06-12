@@ -1,7 +1,7 @@
 import dbf
 import os
 import datetime
-import csv
+import uniWriter
 
 def getAndFilterFiles(path, filt, fileFormat):
 	'''Get and Filter a list of files type = filt Files'''
@@ -82,13 +82,14 @@ def removeDups(inputList, fields):
 		if len(dups) > 1:
 			newest = datetime.date.min
 			for item in dups:
-				if dups[dateInx] > newest:
-					newest = dups[dateInx]
+				if item[dateInx] > newest:
+					newest = item[dateInx]
 					tmp = item
 			clean.append(tmp)
 		else: 
 			clean.append(dups)
 
+	
 
 	print clean[:10]
 	print ("Clean length = {0}".format(len(clean)))
@@ -97,7 +98,9 @@ def removeDups(inputList, fields):
 
 def writeCSV(inList, outFile):
 	with open(outFile, 'wb') as f:
-		writer = csv.writer(f)
+		writer = uniWriter.UnicodeWriter(f, delimiter=',')
 		writer.writerows(inList)
+		# for row in inList:
+		# 	writer.writerow(row)
 	return outFile
 
