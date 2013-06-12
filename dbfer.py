@@ -1,7 +1,7 @@
 import dbf
 import os
 import datetime
-import uniWriter
+import csv
 
 def getAndFilterFiles(path, filt, fileFormat):
 	'''Get and Filter a list of files type = filt Files'''
@@ -22,10 +22,7 @@ def getAndFilterFiles(path, filt, fileFormat):
 def mergeDbfFiles(files):
 	
 	filepath = os.path.split(files[0])[0]
-	# mergeTable = os.path.join(filepath, "merge.dbf")
-	# mergeTable = dbf.Table(mergeTable)
-	# mergeTable.open()
-	
+
 	i=0 #Counter for header
 	catTable = []
 	for aDbf in files:
@@ -87,9 +84,7 @@ def removeDups(inputList, fields):
 					tmp = item
 			clean.append(tmp)
 		else: 
-			clean.append(dups)
-
-	
+			clean.append(dups[0])
 
 	print clean[:10]
 	print ("Clean length = {0}".format(len(clean)))
@@ -98,9 +93,7 @@ def removeDups(inputList, fields):
 
 def writeCSV(inList, outFile):
 	with open(outFile, 'wb') as f:
-		writer = uniWriter.UnicodeWriter(f, delimiter=',')
+		writer = csv.writer(f, delimiter=',')
 		writer.writerows(inList)
-		# for row in inList:
-		# 	writer.writerow(row)
 	return outFile
 
