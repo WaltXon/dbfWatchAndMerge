@@ -23,7 +23,7 @@ def watch(folder):
 		filesInInventory = [x.rstrip('\n') for x in inv.readlines()]
 		inv.close()
 
-		if change(filesInFolder, filesInInventory): #ONLY CATCHES ADDS NOT DELETES 
+		if change(filesInFolder, filesInInventory): #CATCHES ADDS AND DELETES 
 				print("file change found")
 				os.remove(inventory)
 				print("removed old inventory file")

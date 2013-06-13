@@ -40,14 +40,14 @@ def mergeDbfFiles(files):
 
 		for rec in table:
 			tmp = []
-			if i == 0:
-				catTable.append(fields)
-				i+=1
 			for item in rec:
 				tmp.append(item)
 			# print ("row added = {0}".format(tmp))
 			tmp.append(dateAdded)
 			catTable.append(tmp)
+		# if i == 0:
+		# 	catTable.insert(0,fields)
+		# 	i+=1
 
 		table.close()
 		print("Length of catTable = {0}".format(len(catTable)))
@@ -85,7 +85,8 @@ def removeDups(inputList, fields):
 			clean.append(tmp)
 		else: 
 			clean.append(dups[0])
-
+	
+	clean.insert(0, fields)
 	print clean[:10]
 	print ("Clean length = {0}".format(len(clean)))
 	return clean
