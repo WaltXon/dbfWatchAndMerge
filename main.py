@@ -7,6 +7,7 @@ import os
 # target_dir = os.path.join("/","users", "waltnixon", "Documents", "github", "dbfWatchAndMerge", "rigdata")
 # out_csv = os.path.join("/","users", "waltnixon", "Documents", "github", "dbfWatchAndMerge", "rigdata", "out.csv")
 target_dir = r"C:\Users\wnixon\Documents\GitHub\dbfWatchAndMerge\rigdata"
+output_dir = r"C:\Users\wnixon\Documents\GitHub\dbfWatchAndMerge\shapefile"
 
 print ("target_dir = {0}".format(target_dir))
 
