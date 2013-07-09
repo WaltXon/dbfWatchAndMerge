@@ -7,13 +7,13 @@ import os
 # target_dir = os.path.join("/","users", "waltnixon", "Documents", "github", "dbfWatchAndMerge", "rigdata")
 # out_csv = os.path.join("/","users", "waltnixon", "Documents", "github", "dbfWatchAndMerge", "rigdata", "out.csv")
 target_dir = r"C:\Users\wnixon\Documents\GitHub\dbfWatchAndMerge\rigdata"
-output_dir = r"C:\Users\wnixon\Documents\GitHub\dbfWatchAndMerge\shapefile"
+output_dir = r"C:\Users\wnixon\Documents\GitHub\dbfWatchAndMerge\output"
 
 print ("target_dir = {0}".format(target_dir))
 
 if watch.watch(target_dir) == 'change':
 	for fileType in ['l', 'p']:
-		out_csv = target_dir + "out_csv_" + fileType + '.csv'
+		out_csv = os.path.join(output_dir, "out_csv_" + fileType + '.csv')
 		
 		dbfFiles = dbfer.getAndFilterFiles(target_dir, fileType, "dbf")
 
