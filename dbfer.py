@@ -11,7 +11,7 @@ def getAndFilterFiles(path, filt, fileFormat):
 	filteredFiles = []
 	for aFile in files:
 		if aFile.endswith(fileFormat):
-			if filt in os.path.basename(aFile):
+			if filt in os.path.basename(aFile).lower():
 				print aFile	
 				filteredFiles.append(os.path.join(path, aFile))
 
